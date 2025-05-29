@@ -1,0 +1,8 @@
+schema-version: 1
+contributors:
+  - OakLoaf
+id: bluemap-addon
+version: 1.0.0
+entrypoints:
+  - "org.lushplugins.bluemapterracompat.BlueMapTerraCompat"
+license: GPLv3`

@@ -1,4 +1,7 @@
 name: BlueMapTerraCompat
 version: ${project.version}
-main: org.lushplugins.bluemapterracompat.BlueMapTerraCompat
+main: org.lushplugins.bluemapterracompat.NotAPlugin
 api-version: '1.17'
+dependencies:
+  - Terra
+  - BlueMap
