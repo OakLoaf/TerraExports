@@ -1,4 +1,4 @@
-name: ProjectName
+name: BlueMapTerraCompat
 version: ${project.version}
-main: org.lushplugins.projectname.ProjectName
+main: org.lushplugins.bluemapterracompat.BlueMapTerraCompat
 api-version: '1.17'
