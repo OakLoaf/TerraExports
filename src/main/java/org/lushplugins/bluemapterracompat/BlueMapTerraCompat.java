@@ -12,8 +12,6 @@ import com.dfsek.terra.api.world.biome.Biome;
 import com.dfsek.terra.bukkit.nms.v1_21_3.config.VanillaBiomeProperties;
 import com.dfsek.terra.bukkit.world.BukkitPlatformBiome;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.bluecolored.bluemap.api.BlueMapAPI;
-import de.bluecolored.bluemap.common.api.BlueMapAPIImpl;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.lushplugins.bluemapterracompat.config.BiomeInfo;
@@ -34,14 +32,6 @@ public class BlueMapTerraCompat implements AddonInitializer {
 
     @Override
     public void initialize() {
-        Path packsDirectory = getPacksFolder();
-//        BlueMapAPIImpl blueMap = (BlueMapAPIImpl) BlueMapAPI.getInstance().orElseThrow();
-//        Path packsDirectory = blueMap.blueMapService().getConfig().getPacksFolder();
-        if (packsDirectory == null) {
-            logger.error("Failed to get BlueMap's packs directory");
-            return;
-        }
-
         platform.getEventManager()
             .getHandler(FunctionalEventHandler.class)
             .register(addon, ConfigPackPostLoadEvent.class)
@@ -54,7 +44,7 @@ public class BlueMapTerraCompat implements AddonInitializer {
                     NamespacedKey biomeKey = platformBiome.getHandle().getKey();
                     VanillaBiomeProperties biomeProperties = biome.getContext().get(VanillaBiomeProperties.class);
 
-                    Path path = packsDirectory
+                    Path path = getPacksFolder()
                         .resolve(Path.of(
                             "terra_generated", 
                             "data", 
