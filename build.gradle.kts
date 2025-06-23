@@ -26,7 +26,7 @@ dependencies {
     compileOnly("com.dfsek.terra:v1_21_3:6.6.1-BETA+83bc2c902")
 
     compileOnly("de.bluecolored:bluemap-api:2.7.4")
-    compileOnly("de.bluecolored:bluemap-common:5.7")
+    compileOnly("de.bluecolored:bluemap-common:5.9")
 
     // Soft Dependencies
 
