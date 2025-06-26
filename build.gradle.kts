@@ -73,4 +73,6 @@ tasks {
             modrinth("chunky", "P3y2MXnd")
         }
     }
+
+    runPaper.disablePluginJarDetection()
 }
