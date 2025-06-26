@@ -1,13 +1,16 @@
-package org.lushplugins.bluemapterracompat.config;
+package org.lushplugins.terraexports.config;
 
-import com.dfsek.terra.bukkit.nms.v1_21_3.config.VanillaBiomeProperties;
+import com.dfsek.terra.bukkit.nms.v1_21_6.config.VanillaBiomeProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@SuppressWarnings("unused")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BiomeInfo {
     @JsonProperty("temperature")
-    private final float temperature;
+    private final Float temperature;
     @JsonProperty("downfall")
-    private final float downfall;
+    private final Float downfall;
     @JsonProperty("effects")
     private final Effects effects;
 
@@ -17,13 +20,14 @@ public class BiomeInfo {
         this.effects = new Effects(biomeProperties);
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Effects {
         @JsonProperty("water_color")
-        private final int waterColor;
+        private final Integer waterColor;
         @JsonProperty("foliage_color")
-        private final int overlayFoliageColor;
+        private final Integer overlayFoliageColor;
         @JsonProperty("grass_color")
-        private final int overlayGrassColor;
+        private final Integer overlayGrassColor;
         @JsonProperty("grass_color_modifier")
         private final String grassColorModifier;
 

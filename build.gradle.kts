@@ -3,6 +3,7 @@ plugins {
     `maven-publish`
     id("com.gradleup.shadow") version("8.3.0")
     id("xyz.jpenilla.run-paper") version("2.2.4")
+    id("io.papermc.paperweight.userdev") version("2.0.0-beta.17") // TODO: Remove in 1.21.7
 }
 
 group = "org.lushplugins"
@@ -19,17 +20,12 @@ repositories {
 
 dependencies {
     // Dependencies
-    compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
+//    compileOnly("io.papermc.paper:paper-api:1.21.6-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.21.6-R0.1-20250625.205014-46") // TODO: Remove in 1.21.7
 
-    compileOnly("com.dfsek.terra:api:6.6.1-BETA+83bc2c902")
+    compileOnly("com.dfsek.terra:api:6.6.5-BETA+8cfa2e146")
     compileOnly("com.dfsek.terra:manifest-addon-loader:1.0.0-BETA+fd6decc70")
-    compileOnly("com.dfsek.terra:v1_21_3:6.6.1-BETA+83bc2c902")
-
-    compileOnly("de.bluecolored:bluemap-api:2.7.4")
-    compileOnly("de.bluecolored:bluemap-common:5.7")
-
-    // Soft Dependencies
-
+    compileOnly("com.dfsek.terra:v1_21_6:6.6.5-BETA+8cfa2e146")
 
     // Libraries
     implementation("io.github.revxrsal:lamp.common:4.0.0-rc.12")
@@ -57,6 +53,7 @@ tasks {
     shadowJar {
         minimize()
 
+        destinationDirectory.set(file("run/plugins/Terra/addons/"))
         archiveFileName.set("${project.name}-${project.version}.jar")
     }
 
@@ -78,11 +75,11 @@ tasks {
     }
 
     runServer {
-        minecraftVersion("1.21.1")
+        minecraftVersion("1.21.6")
 
         downloadPlugins {
             modrinth("bluemap", "5.7-paper")
-            modrinth("terra", "6.5.0-BETA-bukkit")
+            modrinth("terra", "6.6.5-BETA-bukkit")
         }
     }
 }
