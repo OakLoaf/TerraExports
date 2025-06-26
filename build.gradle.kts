@@ -68,8 +68,9 @@ tasks {
         minecraftVersion("1.21.6")
 
         downloadPlugins {
-            modrinth("bluemap", "5.7-paper")
             modrinth("terra", "6.6.5-BETA-bukkit")
+            modrinth("bluemap", "5.7-paper")
+            modrinth("chunky", "P3y2MXnd")
         }
     }
 }
