@@ -24,9 +24,9 @@ dependencies {
     compileOnly("com.dfsek.terra:v1_21_6:6.6.5-BETA+8cfa2e146")
 
     // Libraries
-    implementation("com.fasterxml.jackson.core:jackson-core:2.19.0") // Jackson
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.19.0") // Jackson
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.19.0") // Jackson
+    implementation("com.fasterxml.jackson.core:jackson-core:2.19.1") // Jackson
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.19.1") // Jackson
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.19.1") // Jackson
 }
 
 java {
