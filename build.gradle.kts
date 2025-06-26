@@ -1,9 +1,7 @@
 plugins {
     `java-library`
-    `maven-publish`
     id("com.gradleup.shadow") version("8.3.0")
     id("xyz.jpenilla.run-paper") version("2.2.4")
-    id("io.papermc.paperweight.userdev") version("2.0.0-beta.17") // TODO: Remove in 1.21.7
 }
 
 group = "org.lushplugins"
@@ -15,21 +13,17 @@ repositories {
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://repo.papermc.io/repository/maven-public/") // Paper
     maven("https://repo.codemc.org/repository/maven-public/") // Terra
-    maven("https://repo.bluecolored.de/releases") // BlueMap
 }
 
 dependencies {
     // Dependencies
-//    compileOnly("io.papermc.paper:paper-api:1.21.6-R0.1-SNAPSHOT")
-    paperweight.paperDevBundle("1.21.6-R0.1-20250625.205014-46") // TODO: Remove in 1.21.7
+    compileOnly("io.papermc.paper:paper-api:1.21.6-R0.1-SNAPSHOT")
 
     compileOnly("com.dfsek.terra:api:6.6.5-BETA+8cfa2e146")
     compileOnly("com.dfsek.terra:manifest-addon-loader:1.0.0-BETA+fd6decc70")
     compileOnly("com.dfsek.terra:v1_21_6:6.6.5-BETA+8cfa2e146")
 
     // Libraries
-    implementation("io.github.revxrsal:lamp.common:4.0.0-rc.12")
-    implementation("io.github.revxrsal:lamp.bukkit:4.0.0-rc.12")
     implementation("com.fasterxml.jackson.core:jackson-core:2.19.0") // Jackson
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.19.0") // Jackson
     implementation("com.fasterxml.jackson.core:jackson-databind:2.19.0") // Jackson
@@ -53,22 +47,18 @@ tasks {
     shadowJar {
         minimize()
 
-        destinationDirectory.set(file("run/plugins/Terra/addons/"))
+        // Destination for runServer task
+//        destinationDirectory.set(file("run/plugins/Terra/addons/"))
+
         archiveFileName.set("${project.name}-${project.version}.jar")
     }
 
     processResources{
-        filesMatching("plugin.yml") {
-            expand(project.properties)
-        }
         filesMatching("terra.addon.yml") {
             expand(project.properties)
         }
 
         inputs.property("version", rootProject.version)
-        filesMatching("plugin.yml") {
-            expand("version" to rootProject.version)
-        }
         filesMatching("terra.addon.yml") {
             expand("version" to rootProject.version)
         }
@@ -80,39 +70,6 @@ tasks {
         downloadPlugins {
             modrinth("bluemap", "5.7-paper")
             modrinth("terra", "6.6.5-BETA-bukkit")
-        }
-    }
-}
-
-publishing {
-    repositories {
-        maven {
-            name = "lushReleases"
-            url = uri("https://repo.lushplugins.org/releases")
-            credentials(PasswordCredentials::class)
-            authentication {
-                isAllowInsecureProtocol = true
-                create<BasicAuthentication>("basic")
-            }
-        }
-
-        maven {
-            name = "lushSnapshots"
-            url = uri("https://repo.lushplugins.org/snapshots")
-            credentials(PasswordCredentials::class)
-            authentication {
-                isAllowInsecureProtocol = true
-                create<BasicAuthentication>("basic")
-            }
-        }
-    }
-
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = rootProject.group.toString()
-            artifactId = rootProject.name
-            version = rootProject.version.toString()
-            from(project.components["java"])
         }
     }
 }
