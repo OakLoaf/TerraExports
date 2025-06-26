@@ -45,14 +45,14 @@ public class TerraExports implements AddonInitializer {
                         .literal("biomes", Description.of("Start a biome export"))
                         .permission("terra.export.biomes")
                         .handler(context -> {
-                            platform.getConfigRegistry().entries().forEach(this::exportPack);
+                            platform.getConfigRegistry().entries().forEach(this::exportBiomes);
                             context.sender().sendMessage("Successfully created biome export");
                         })
                 );
             });
     }
 
-    private void exportPack(ConfigPack pack) {
+    private void exportBiomes(ConfigPack pack) {
         String packKey = pack.getNamespace();
         File targetDir = platform.getDataFolder().toPath()
             .resolve("exports")
