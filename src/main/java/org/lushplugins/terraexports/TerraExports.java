@@ -11,20 +11,22 @@ import com.dfsek.terra.api.inject.annotations.Inject;
 
 import com.dfsek.terra.api.world.biome.Biome;
 import com.dfsek.terra.bukkit.nms.v1_21_6.config.VanillaBiomeProperties;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.incendo.cloud.CommandManager;
 import org.incendo.cloud.description.Description;
 import org.lushplugins.terraexports.config.BiomeInfo;
 import org.slf4j.Logger;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 @SuppressWarnings("unused")
 public class TerraExports implements AddonInitializer {
-    private static final ObjectMapper JACKSON = new ObjectMapper()
-        .enable(SerializationFeature.INDENT_OUTPUT);
+    private static final Gson GSON = new GsonBuilder()
+        .setPrettyPrinting()
+        .create();
 
     @Inject
     private Platform platform;
@@ -64,8 +66,9 @@ public class TerraExports implements AddonInitializer {
         pack.getRegistry(Biome.class).forEach((key, biome) -> {
             VanillaBiomeProperties biomeProperties = biome.getContext().get(VanillaBiomeProperties.class);
 
-            try {
-                JACKSON.writeValue(new File(targetDir, biome.getID().toLowerCase() + ".json"), new BiomeInfo(biomeProperties));
+            File file = new File(targetDir, biome.getID().toLowerCase() + ".json");
+            try (FileWriter writer = new FileWriter(file)) {
+                GSON.toJson(new BiomeInfo(biomeProperties), writer);
             } catch (IOException e) {
                 logger.error("Failed to write biome: ", e);
             }

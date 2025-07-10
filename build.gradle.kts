@@ -17,16 +17,15 @@ repositories {
 
 dependencies {
     // Dependencies
-    compileOnly("io.papermc.paper:paper-api:1.21.6-R0.1-SNAPSHOT")
+//    compileOnly("io.papermc.paper:paper-api:1.21.6-R0.1-SNAPSHOT")
 
     compileOnly("com.dfsek.terra:api:6.6.5-BETA+8cfa2e146")
     compileOnly("com.dfsek.terra:manifest-addon-loader:1.0.0-BETA+fd6decc70")
     compileOnly("com.dfsek.terra:v1_21_6:6.6.5-BETA+8cfa2e146")
 
-    // Libraries
-    implementation("com.fasterxml.jackson.core:jackson-core:2.19.0") // Jackson
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.19.0") // Jackson
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.19.0") // Jackson
+    // TODO: Ensure that Tectonic's instance isn't relocated
+    // Uses PolyhedralDev/Tectonic's instance of gson
+    compileOnly("com.google.code.gson:gson:2.10.1")
 }
 
 java {
