@@ -10,22 +10,17 @@ version = "1.0.0"
 repositories {
     mavenLocal()
     mavenCentral()
-    maven("https://oss.sonatype.org/content/groups/public/")
-    maven("https://repo.papermc.io/repository/maven-public/") // Paper
     maven("https://repo.codemc.org/repository/maven-public/") // Terra
 }
 
 dependencies {
     // Dependencies
-//    compileOnly("io.papermc.paper:paper-api:1.21.6-R0.1-SNAPSHOT")
-
     compileOnly("com.dfsek.terra:api:6.6.5-BETA+8cfa2e146")
     compileOnly("com.dfsek.terra:manifest-addon-loader:1.0.0-BETA+fd6decc70")
     compileOnly("com.dfsek.terra:v1_21_6:6.6.5-BETA+8cfa2e146")
 
-    // TODO: Ensure that Tectonic's instance isn't relocated
-    // Uses PolyhedralDev/Tectonic's instance of gson
-    compileOnly("com.google.code.gson:gson:2.10.1")
+    // We use Tectonic's instance of gson
+    compileOnly("com.dfsek.tectonic:json:4.2.1")
 }
 
 java {
