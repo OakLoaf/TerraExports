@@ -61,7 +61,7 @@ public class TerraExports implements AddonInitializer {
             .toFile();
         targetDir.mkdirs();
 
-        for (Biome biome : pack.getBiomeProvider().getBiomes()) {
+        pack.getRegistry(Biome.class).forEach((key, biome) -> {
             VanillaBiomeProperties biomeProperties = biome.getContext().get(VanillaBiomeProperties.class);
 
             try {
@@ -69,6 +69,6 @@ public class TerraExports implements AddonInitializer {
             } catch (IOException e) {
                 logger.error("Failed to write biome: ", e);
             }
-        }
+        });
     }
 }
