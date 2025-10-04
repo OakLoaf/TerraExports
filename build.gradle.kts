@@ -15,9 +15,9 @@ repositories {
 
 dependencies {
     // Dependencies
-    compileOnly("com.dfsek.terra:api:6.6.5-BETA+8cfa2e146")
+    compileOnly("com.dfsek.terra:api:6.6.6-BETA+fb5e597a1")
     compileOnly("com.dfsek.terra:manifest-addon-loader:1.0.0-BETA+fd6decc70")
-    compileOnly("com.dfsek.terra:v1_21_6:6.6.5-BETA+8cfa2e146")
+    compileOnly("com.dfsek.terra:v1_21_8:6.6.6-BETA+451683aff")
 
     // We use Tectonic's instance of gson
     compileOnly("com.dfsek.tectonic:json:4.2.1")
@@ -62,7 +62,7 @@ tasks {
         minecraftVersion("1.21.6")
 
         downloadPlugins {
-            modrinth("terra", "6.6.5-BETA-bukkit")
+            modrinth("terra", "6.6.6-BETA-bukkit")
             modrinth("bluemap", "5.7-paper")
             modrinth("chunky", "P3y2MXnd")
         }

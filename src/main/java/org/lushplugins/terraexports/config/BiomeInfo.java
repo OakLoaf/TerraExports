@@ -1,6 +1,6 @@
 package org.lushplugins.terraexports.config;
 
-import com.dfsek.terra.bukkit.nms.v1_21_6.config.VanillaBiomeProperties;
+import com.dfsek.terra.bukkit.nms.v1_21_8.config.VanillaBiomeProperties;
 import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("unused")

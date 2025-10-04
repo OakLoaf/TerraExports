@@ -10,7 +10,7 @@ import com.dfsek.terra.api.event.functional.FunctionalEventHandler;
 import com.dfsek.terra.api.inject.annotations.Inject;
 
 import com.dfsek.terra.api.world.biome.Biome;
-import com.dfsek.terra.bukkit.nms.v1_21_6.config.VanillaBiomeProperties;
+import com.dfsek.terra.bukkit.nms.v1_21_8.config.VanillaBiomeProperties;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.incendo.cloud.CommandManager;
